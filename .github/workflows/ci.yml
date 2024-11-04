@@ -31,7 +31,7 @@ jobs:
 
       # Krok 3: Uruchom trenowanie modelu
       - name: Run model training script
-        run: python train.py
+        run: python s26102.py
 
       # Krok 4: Wyświetl wynik (accuracy)
       - name: Display training result
