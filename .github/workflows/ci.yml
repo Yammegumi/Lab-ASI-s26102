@@ -1,38 +1,61 @@
-name: CI/CD Pipeline for ML Model Training
+# .github/workflows/ci.yml
+
+name: Data Processing with Google Sheets
 
 # Wykonuj akcje przy każdym pushu do gałęzi main
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  train-model:
+  download-script:
+    # Uruchom tylko, gdy wiadomość commitu zawiera 'deploy'
+    if: contains(github.event.head_commit.message, 'deploy')
     runs-on: ubuntu-latest
-
     steps:
-      # Krok 1: Checkout repozytorium
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
-      # Krok 2: Zainstaluj Python i zależności
+      # Checkout repo i pobranie skryptu z głównego zadania
+      - uses: actions/checkout@v3
+      - name: Clone repo with script
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git clone https://$PAT_TOKEN@github.com/Yammegumi/Lab2---Obr-bka-danych.git
+      #    cp Lab2---Obr-bka-danych/generator_danych.py .
+
+      # Setup pythona
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.8'
 
+      # Instalacja bibliotek
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Krok 3: Uruchom trenowanie modelu
-      - name: Run model training script
-        run: python s26102.py
+      # Set up dostepów do Google Sheets
+      - name: Set up Google Sheets credentials
+        run: |
+          echo "${{ secrets.GOOGLE_CREDS }}" | base64 -d > credentials.json
 
-      # Krok 4: Wyświetl wynik (accuracy)
-      - name: Display training result
-        run: cat accuracy.txt
+      # Generowanie pliku csv z pobranego repo
+      - name: Run data processing script
+        run: |
+          python Lab2---Obr-bka-danych/generator_danych.py -s 26102
+
+      # Odczyt pliku csv oraz upload danych do Google Sheets
+      - name: Run data processing script
+        run: |
+          python s26102.py --upload './data_student_26102.csv'
+
+      # Odczyt danych z Google Sheets oraz zwrócenie danych po czyszczeniu i standaryzacji na wyjście
+      - name: Run data processing script
+        run: |
+          python s26102.py --standardize
+
+      # Wyświetlenie raportu po przetwarzaniu
+      - name: Display report
+        run: |
+          cat report.txt
