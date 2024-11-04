@@ -1,24 +1,35 @@
-# Lab1
+https://vincentarelbundock.github.io/Rdatasets/csv/AER/CollegeDistance.csv
 
----
+Proszę o wykorzystanie już zdobytej wiedzy i zautomatyzowanie procesów w GitHub Action.
 
-1. Skopiowac plik lokalnie i stworzyć swoje repozytorium z nazwą Lab-1_<twój-numer-studenta> i umieścić prywatne repozytorium w organizacji PJATK-ASI-2024, do repozytorium ma mieć dostęp tylko owner repozytorium.
-   
-2. a) Zmień nazwę pliku `train.py` na `<twój-numer-studenta>.py`.  
-   b) W skrypcie stwórz funkcję, która będzie generowała automatycznie dwa zbiory danych w przestrzeni 2D. Każdy zbiór ma być chmurą zbliżonych punktów, a zbiory powinny być na tyle odległe, aby można było gołym okiem określić ich położenie. Wielkość chmury powinna wynosić od 50 do 100 punktów.  
-   c) Wykorzystując wygenerowane dane, stwórz model w skrypcie, który będzie w stanie przewidywać, do którego zbioru/chmury należy dany punkt.
+# Lab3-Analizator_wynikow
+Zadanie 1: Budowa modelu predykcyjnego (20 punktów)
+Cel:
+Na podstawie dostarczonego datasetu studenci mają za zadanie zbudować model predykcyjny, który będzie przewidywał zmienną score. Powinni wybrać odpowiedni algorytm, przeprowadzić analizę danych i ocenić jakość modelu. Do całej pracy ma zostać stworzona dokumentacja, może być w formie Readme.pdf i tam zamieszczone wykresy, albo można użyć bardziej profesjonalnego oprogramowania do tworzenia dokumentacji IT.
 
-3. Uzupełnij plik `requirements.txt`.
+Etapy:
+Eksploracja i wstępna analiza danych (5 punktów)
 
-4. Uzupełnij plik `.github/workflows/ci.yml`, tak aby komenda:
+Wczytanie i zapoznanie się z danymi.
+Sprawdzenie brakujących wartości oraz ich odpowiednia obsługa (np. imputacja lub usunięcie).
+Analiza statystyczna zmiennych.
+Ocena: 5 punktów za pełną eksplorację danych, w tym wykresy i opisy zmiennych.
 
-   ```yaml
-   run: cat accuracy.txt
-   ```
+Inżynieria cech i przygotowanie danych (5 punktów)
 
-   wyświetlała:
-   ```
-   Model trained with accuracy: <wynik-w-procentach>%
-   ```
+Przeprowadzenie odpowiedniej inżynierii cech (np. kategoryzacja, standaryzacja, normalizacja, tworzenie nowych zmiennych, jeśli konieczne).
+Podział danych na zbiór treningowy i testowy.
+Ocena: 5 punktów za poprawne przygotowanie danych, z wyjaśnieniem wszystkich kroków.
 
----
+Wybór i trenowanie modelu (5 punktów)
+
+Wybór odpowiedniego algorytmu (np. regresja liniowa, lasy losowe, regresja logistyczna, sieci neuronowe itp.).
+Wytrenowanie modelu na zbiorze treningowym.
+Wyjaśnienie, dlaczego wybrano dany model.
+Ocena: 5 punktów za wybór odpowiedniego modelu i poprawne przeszkolenie modelu.
+
+Ocena i optymalizacja modelu (5 punktów)
+
+Ocena jakości modelu na zbiorze testowym (np. przy użyciu metryk takich jak R², MAE, MSE).
+Jeśli wyniki nie są satysfakcjonujące, należy przeprowadzić optymalizację (np. tunowanie hiperparametrów, walidacja krzyżowa).
+Ocena: 5 punktów za ocenę modelu i ewentualną optymalizację.
