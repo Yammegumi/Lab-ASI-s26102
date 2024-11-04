@@ -6,7 +6,7 @@ name: Data Processing with Google Sheets
 on:
   push:
     branches:
-      - main
+      - lab2
 
 jobs:
   download-script:
