@@ -16,7 +16,7 @@ warnings.filterwarnings('ignore')
 
 # Konfiguracja loggera
 logging.basicConfig(
-    filename='model_training.log',
+    filename='data_prediction.log',
     level=logging.DEBUG,
     format='%(levelname)s:%(asctime)s: %(message)s',
     filemode='w'
