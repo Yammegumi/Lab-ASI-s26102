@@ -107,8 +107,7 @@ def standardize_data(df):
 
 # Główna funkcja
 def main():
-    parser = argparse.ArgumentParser(
-        description="Opcje: --upload (upload danych do Google Sheets) --standardize (czyszczenie i standaryzacja danych)")
+    parser = argparse.ArgumentParser(description="Opcje: --upload (upload danych do Google Sheets) --standardize (czyszczenie i standaryzacja danych)")
     parser.add_argument('--upload', type=str, help="Ścieżka do pliku CSV do wczytania i uploadu do Google Sheets")
     parser.add_argument('--standardize', action='store_true', help="Przeprowadzenie czyszczenia i standaryzacji danych")
 
@@ -124,12 +123,11 @@ def main():
             logger.error("Błąd przy odczycie danych z Google Sheets.")
             return
 
-        rows_before, empty_before = df.shape[0], df.isnull().sum().sum()
-        df_cleaned, empty_after = clean_data(df)
+        rows_before = df.shape[0]
+        df_cleaned, empty_before, empty_after = clean_data(df)  # Dodano `empty_before`
 
         rows_after = df_cleaned.shape[0]
-        changed_data_percentage = ((empty_before - empty_after) / (
-                    rows_before * len(df.columns))) * 100 if empty_before > 0 else 0
+        changed_data_percentage = ((empty_before - empty_after) / (rows_before * len(df.columns))) * 100 if empty_before > 0 else 0
         deleted_data_percentage = ((rows_before - rows_after) / rows_before) * 100 if rows_before > 0 else 0
 
         logger.info(f"Usunięto {rows_before - rows_after} wierszy podczas czyszczenia.")
@@ -144,7 +142,5 @@ def main():
     else:
         logger.error("Nie podano żadnych opcji. Użyj --upload lub --standardize.")
 
-
 if __name__ == '__main__':
-    # test
     main()
