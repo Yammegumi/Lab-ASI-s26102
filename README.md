@@ -1,24 +1,33 @@
-# Lab1
+# Lab4-Analizator_wynikow
+Zadanie 2: Implementacja i publikacja modelu w Dockerze (20 punktów)
+Cel:
+W tym zadaniu studenci mają za zadanie stworzyć aplikację, która uruchomi model predykcyjny w kontenerze Docker. Następnie muszą opublikować ten kontener na platformie Docker Hub oraz stworzyć plik README.md na GitHubie, który wyjaśni proces uruchamiania aplikacji.
 
----
+Etapy:
+Implementacja API lub skryptu przewidywania (5 punktów)
 
-1. Skopiowac plik lokalnie i stworzyć swoje repozytorium z nazwą Lab-1_<twój-numer-studenta> i umieścić prywatne repozytorium w organizacji PJATK-ASI-2024, do repozytorium ma mieć dostęp tylko owner repozytorium.
-   
-2. a) Zmień nazwę pliku `train.py` na `<twój-numer-studenta>.py`.  
-   b) W skrypcie stwórz funkcję, która będzie generowała automatycznie dwa zbiory danych w przestrzeni 2D. Każdy zbiór ma być chmurą zbliżonych punktów, a zbiory powinny być na tyle odległe, aby można było gołym okiem określić ich położenie. Wielkość chmury powinna wynosić od 50 do 100 punktów.  
-   c) Wykorzystując wygenerowane dane, stwórz model w skrypcie, który będzie w stanie przewidywać, do którego zbioru/chmury należy dany punkt.
+Stworzenie skryptu (np. w Pythonie z wykorzystaniem Flask, FastAPI lub CLI), który pozwoli na przewidywanie na podstawie dostarczonych danych.
+Skrypt powinien przyjmować dane w formacie JSON lub CSV i zwracać przewidywany wynik.
+Ocena: 5 punktów za poprawną implementację przewidywania.
 
-3. Uzupełnij plik `requirements.txt`.
+Dockerfile (5 punktów)
 
-4. Uzupełnij plik `.github/workflows/ci.yml`, tak aby komenda:
+Stworzenie poprawnego pliku Dockerfile, który umożliwia uruchomienie aplikacji w kontenerze.
+Obraz powinien być zoptymalizowany pod kątem wielkości oraz zawierać wszystkie potrzebne zależności.
+Ocena: 5 punktów za poprawny Dockerfile oraz uruchomienie aplikacji w kontenerze.
 
-   ```yaml
-   run: cat accuracy.txt
-   ```
+Publikacja w Docker Hub (5 punktów)
 
-   wyświetlała:
-   ```
-   Model trained with accuracy: <wynik-w-procentach>%
-   ```
+Stworzenie konta na Docker Hub.
+Opublikowanie obrazu Dockera z aplikacją na Docker Hub.
+Ocena: 5 punktów za poprawną publikację obrazu na Docker Hub.
 
----
+README.md i dokumentacja (5 punktów)
+
+Stworzenie repozytorium na GitHubie, które zawiera pliki projektu, w tym model oraz skrypt.
+Przygotowanie szczegółowego pliku README.md, który wyjaśnia kroki:
+a) Jak sklonować repozytorium.
+b) Jak uruchomić aplikację lokalnie.
+c) Jak uruchomić aplikację z wykorzystaniem Dockera.
+d) Instrukcje dotyczące korzystania z obrazu Docker z Docker Huba (jak go pobrać i uruchomić).
+Ocena: 5 punktów za kompletny i czytelny plik README.md oraz poprawną dokumentację.

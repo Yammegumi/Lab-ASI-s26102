@@ -1,0 +1,6 @@
+INFO:2024-11-05 02:29:37,920: Najlepsze parametry: {'randomforestregressor__n_estimators': 100, 'randomforestregressor__min_samples_split': 2, 'randomforestregressor__min_samples_leaf': 2, 'randomforestregressor__max_depth': 10, 'randomforestregressor__bootstrap': True}
+INFO:2024-11-05 02:29:37,933: MSE na zbiorze testowym: 49.1919
+INFO:2024-11-05 02:29:37,933: MAE na zbiorze testowym: 5.6841
+INFO:2024-11-05 02:29:37,933: RMSE na zbiorze testowym: 7.0137
+INFO:2024-11-05 02:29:37,933: R^2 na zbiorze testowym: 0.3513
+INFO:2024-11-05 02:29:37,933: MAPE na zbiorze testowym: 0.1174

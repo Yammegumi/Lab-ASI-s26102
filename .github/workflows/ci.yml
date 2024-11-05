@@ -4,10 +4,10 @@ name: CI/CD Pipeline for ML Model Training
 on:
   push:
     branches:
-      - main
+      - lab4
   pull_request:
     branches:
-      - main
+      - lab4
 
 jobs:
   train-model:
