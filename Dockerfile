@@ -17,3 +17,4 @@ EXPOSE 5000
 
 # Uruchomienie aplikacji
 CMD ["python", "app.py"]
+
